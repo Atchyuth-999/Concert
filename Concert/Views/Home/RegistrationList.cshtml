@@ -1,0 +1,171 @@
+﻿@model IEnumerable<ConcertRepository.Model.UserDTO>
+
+@{
+    ViewBag.Title = "Registered Users";
+}
+
+@section Styles {
+    <link href="~/Content/RegistrationList.css" rel="stylesheet" />
+}
+
+<nav class="navbar-custom">
+    @Html.ActionLink("Home", "Welcome", "Home")
+    @Html.ActionLink("Registration List", "RegistrationList", "Home")
+</nav>
+
+<div class="form-wrapper">
+
+    <h2>Registered Users</h2>
+
+    <div class="registration-actions">
+
+        <div>
+            @Html.ActionLink("➕ Add New Registration","Welcome","Home",null,new { @class = "add-btn" })
+        </div>
+
+        @using (Html.BeginForm("RegistrationList","Home",FormMethod.Get,new { @class = "search-form" }))
+        {
+            <input type="number"
+                   name="searchId"
+                   class="search-box"
+                   placeholder="Enter Registration ID"
+                   min="1" />
+
+            <button type="submit" class="search-btn">
+                Search
+            </button>
+
+            @Html.ActionLink("Show All","RegistrationList","Home",null,new { @class = "show-all-btn" })
+        }
+
+    </div>
+
+    @if (!Model.Any())
+    {
+        <h3 class="empty-message">
+            Please enter the details
+        </h3>
+    }
+     else 
+                {
+        <table class="list-table">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+            {
+                using (Html.BeginForm("UpdateFromList", "Home", FormMethod.Post))
+                {
+                        <tr>
+
+                            <td>
+                                @item.RegistrationId
+
+                                @Html.Hidden("RegistrationId", item.RegistrationId)
+                                @Html.Hidden("Age", item.Age)
+                                @Html.Hidden("City", item.City)
+                                @Html.Hidden("State", item.State)
+                                @Html.Hidden("HomeAddress", item.HomeAddress)
+                                @Html.Hidden("StreetAddress", item.StreetAddress)
+                                @Html.Hidden("PinCode", item.PinCode)
+                                @Html.Hidden("HeardAboutConcert", item.HeardAboutConcert)
+                                @Html.Hidden("OtherSource", item.OtherSource)
+                                @Html.Hidden("VirtualConcertFee", item.VirtualConcertFee)
+                                @Html.Hidden("PaymentMethod", item.PaymentMethod)
+                            </td>
+
+                            <td>
+                                @Html.TextBox("FirstName", item.FirstName)
+                            </td>
+
+                            <td>
+                                @Html.TextBox("LastName", item.LastName)
+                            </td>
+
+                            <td>
+                                @Html.DropDownList("Gender",new List<SelectListItem>
+                                     {
+                                        new SelectListItem
+                                        {
+                                            Text = "Male",
+                                            Value = "Male",
+                                            Selected = item.Gender == "Male"
+                                        },
+                                        new SelectListItem
+                                        {
+                                            Text = "Female",
+                                            Value = "Female",
+                                            Selected = item.Gender == "Female"
+                                        }
+                                    })
+                            </td>
+
+                            <td>
+                                @Html.TextBox("PhoneNumber", item.PhoneNumber)
+                            </td>
+
+                            <td>
+                                @Html.TextBox("EmailAddress", item.EmailAddress)
+                            </td>
+
+                            <td>
+                                @Html.TextBox("Quantity",item.Quantity,new
+                                {
+                                    type = "number",
+                                    min = "1"
+                                })
+                            </td>
+
+                            <td>
+                                @Html.TextBox("TotalAmount", item.TotalAmount,
+                                    new
+                                    {
+                                        type = "number",
+                                        @readonly = "readonly"
+                                    })
+                            </td>
+
+                            <td>
+                                <div class="action-buttons">
+
+                                    <input type="submit"
+                                           value="Update"
+                                           class="edit-btn" />
+
+                                    @Html.ActionLink("Delete","Delete","Home",new
+                                        {
+                                            id = item.RegistrationId
+        },
+                                        new
+                                        {
+                                            @class = "delete-btn",
+                                            onclick = "return confirm('Are you sure you want to delete this registration?');"
+                                        })
+
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                }
+
+            </tbody>
+
+        </table>
+    }
+
+</div>

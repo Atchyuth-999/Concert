@@ -1,0 +1,6 @@
+D:\ConcertTask\Concert\ConcertRepository\bin\Release\ConcertRepository.dll
+D:\ConcertTask\Concert\ConcertRepository\bin\Release\ConcertRepository.pdb
+D:\ConcertTask\Concert\ConcertRepository\obj\Release\ConcertRepository.csproj.AssemblyReference.cache
+D:\ConcertTask\Concert\ConcertRepository\obj\Release\ConcertRepository.csproj.CoreCompileInputs.cache
+D:\ConcertTask\Concert\ConcertRepository\obj\Release\ConcertRepository.dll
+D:\ConcertTask\Concert\ConcertRepository\obj\Release\ConcertRepository.pdb

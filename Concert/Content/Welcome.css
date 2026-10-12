@@ -1,0 +1,351 @@
+﻿/*PAGE*/
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow-y: auto;
+}
+
+
+/*   BACKGROUND*/
+
+
+body {
+    background-image: url("/Content/Images/ConcertImage1.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/*  
+ NAVBAR*/
+
+.navbar-custom {
+    width: 100%;
+    padding: 18px 45px;
+    background: rgba(0, 0, 0, 0.78);
+    box-sizing: border-box;
+}
+
+    .navbar-custom a {
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 600;
+        margin-right: 35px;
+        transition: .3s;
+    }
+
+        .navbar-custom a:hover {
+            color: #00d9ff;
+        }
+
+
+/*   FORM CONTAINER*/
+
+
+.form-wrapper {
+    width: 48%;
+    margin: 40px auto;
+    padding: 60px 50px;
+    background: rgba(0, 0, 0, 0.42);
+    border-radius: 6px;
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,.45);
+}
+
+
+/*   TITLE*/
+
+
+h2 {
+    font-size: 40px;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+/*   ABOUT SECTION*/
+
+
+.about-section {
+    margin-bottom: 20px;
+}
+
+    .about-section p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 12px;
+    }
+
+        .about-section p:first-child {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,.30);
+    margin: 40px 0;
+}
+
+/*   TABLE*/
+
+
+.form-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 22px;
+}
+
+    .form-table td {
+        color: white;
+        font-size: 16px;
+        vertical-align: top;
+    }
+
+        .form-table td:nth-child(1) {
+            width: 170px;
+            font-weight: bold;
+        }
+
+        .form-table td:nth-child(2) {
+            width: 220px;
+        }
+
+        .form-table td:nth-child(3) {
+            width: 140px;
+            font-weight: bold;
+        }
+
+        .form-table td:nth-child(4) {
+            width: 220px;
+        }
+/*   TEXTBOXES*/
+
+
+input[type=text],
+input[type=email],
+input[type=number],
+.state-dropdown {
+    width: 200px;
+    height: 40px;
+    padding: 8px 12px;
+    border: 2px solid #00d9ff;
+    background: rgba(255,255,255,.08);
+    color: white;
+    font-size: 15px;
+    border-radius: 3px;
+    outline: none;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+    input[type=text]:focus,
+    input[type=email]:focus,
+    input[type=number]:focus,
+    .state-dropdown:focus {
+        border-color: cyan;
+        box-shadow: 0 0 10px cyan;
+    }
+
+
+/*   PLACEHOLDER*/
+
+
+::placeholder {
+    color: rgba(255,255,255,.60);
+}
+
+
+/*   LONG TEXTBOXES*/
+
+
+.form-table tr:nth-child(5) input,
+.form-table tr:nth-child(6) input,
+.form-table tr:nth-child(7) input {
+    width: 470px;
+}
+
+
+/*   PHONE NUMBER*/
+
+
+.phone-number {
+    width: 470px !important;
+    max-width: 100%;
+}
+
+/*   STATE DROPDOWN*/
+
+
+.state-dropdown {
+    width: 200px;
+    cursor: pointer;
+}
+
+    .state-dropdown option {
+        background: #1b1b1b;
+        color: white;
+    }
+
+
+/*   RADIO BUTTONS*/
+
+
+input[type=radio],
+input[type=checkbox] {
+    transform: scale(1.05);
+    margin-right: 6px;
+    margin-left: 10px;
+}
+
+.options {
+    font-size: 15px;
+    line-height: 2.1;
+}
+
+
+/*   VALIDATION MESSAGES*/
+
+.text-danger {
+    display: block;
+    color: #ff4d4d;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+
+/*   REMINDERS*/
+
+
+.reminders {
+    margin-top: 40px;
+}
+
+    .reminders h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .reminders ul {
+        padding-left: 25px;
+    }
+
+    .reminders li {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+/*   BUTTONS*/
+
+
+.submit-btn,
+.list-link {
+    display: inline-block;
+    padding: 14px 35px;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.submit-btn {
+    margin-top: 35px;
+    margin-right: 15px;
+    background: #00d9ff;
+    color: black;
+}
+
+    .submit-btn:hover {
+        background: white;
+        color: black;
+        transform: translateY(-3px);
+        box-shadow: 0 0 18px #00d9ff;
+    }
+
+.list-link {
+    background: white;
+    color: black;
+}
+
+    .list-link:hover {
+        background: #00d9ff;
+        color: black;
+    }
+
+/*   REMOVE AGE SPINNER ONLY*/
+
+
+.age-box::-webkit-inner-spin-button,
+.age-box::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.age-box {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+ 
+/*   RESPONSIVE DESIGN*/
+
+@media(max-width: 1200px) {
+    .form-wrapper {
+        width: 90%;
+        padding: 35px;
+    }
+
+    h2 {
+        font-size: 34px;
+    }
+
+    .form-table tr {
+        display: block;
+        margin-bottom: 18px;
+    }
+
+    .form-table td {
+        display: block;
+        width: 100% !important;
+        padding: 5px 0;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=number],
+    .phone-number,
+    .state-dropdown {
+        width: 100% !important;
+    }
+
+    .submit-btn,
+    .list-link {
+        display: block;
+        width: 230px;
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .navbar-custom {
+        text-align: center;
+        padding: 15px;
+    }
+
+        .navbar-custom a {
+            display: inline-block;
+            margin: 8px 15px;
+        }
+}

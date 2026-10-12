@@ -1,0 +1,272 @@
+﻿@model Concert.Models.User
+
+@{
+    ViewBag.Title = "Virtual Concert Registration";
+
+    string formAction = "ConcertDetails";
+    string buttonText = "Submit";
+
+    if (Model.RegistrationId != 0)
+    {
+        formAction = "Update";
+        buttonText = "Update";
+    }
+}
+
+@section Styles {
+    <link href="~/Content/Welcome.css" rel="stylesheet" />
+}
+
+<nav class="navbar-custom">
+    @Html.ActionLink("Home", "Welcome", "Home")
+    @Html.ActionLink("Registration List", "RegistrationList", "Home")
+</nav>
+@using (Html.BeginForm(formAction, "Home", FormMethod.Post))
+{
+    <div class="form-wrapper">
+
+        @Html.HiddenFor(m => m.RegistrationId)
+
+        <h2>Virtual Concert Registration Form</h2>
+
+        <div class="about-section">
+            <p>--- About this Virtual Concert ---</p>
+            <p><b>🎵 In Loving Memory: A Tribute to XXXTentacion 🎸</b></p>
+
+            <p>
+                ✨ An unforgettable virtual tribute concert is coming.
+                <br />
+                🕘 Don't let this opportunity slip away—register now! 🚀
+            </p>
+
+            <p>Concert Time : @DateTime.Now.ToString("dddd, MMMM dd, yyyy h:mm : tt :ss")</p>
+        </div>
+
+        <hr />
+
+        <table class="form-table">
+
+            <tr>
+                <td>First Name</td>
+                <td>
+                    @Html.TextBoxFor(m => m.FirstName)
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                </td>
+
+                <td>Last Name</td>
+                <td>
+                    @Html.TextBoxFor(m => m.LastName)
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Age</td>
+                <td>
+                    @Html.TextBoxFor(m => m.Age, new
+                    {
+                        type = "number",
+                        placeholder = "e.g., 23",
+                        @class = "age-box"
+                    })
+                    @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Gender</td>
+                <td colspan="3">
+                    @Html.RadioButtonFor(m => m.Gender, "Male") Male
+                    @Html.RadioButtonFor(m => m.Gender, "Female") Female
+                    @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Phone Number</td>
+                <td colspan="3">
+                    @Html.TextBoxFor(m => m.PhoneNumber, new
+                    {
+                        @class = "phone-number",
+                        placeholder = "Phone Number"
+                    })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Email Address</td>
+                <td colspan="3">
+                    @Html.TextBoxFor(m => m.EmailAddress, new
+                    {
+                        type = "email",
+                        placeholder = "example@example.com"
+                    })
+                    @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Home Address</td>
+                <td colspan="3">
+                    @Html.TextBoxFor(m => m.HomeAddress, new
+                    {
+                        placeholder = "Home Address"
+                    })
+                    @Html.ValidationMessageFor(m => m.HomeAddress, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Street Address</td>
+                <td colspan="3">
+                    @Html.TextBoxFor(m => m.StreetAddress, new
+                    {
+                        placeholder = "Street Address Line 2"
+                    })
+                    @Html.ValidationMessageFor(m => m.StreetAddress, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>City</td>
+                <td>
+                    @Html.TextBoxFor(m => m.City)
+                    @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                </td>
+
+                <td>State</td>
+                <td>
+                    @Html.DropDownListFor(m => m.State,
+                        new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "-- Select State --", Value = "" },
+                            new SelectListItem { Text = "Andhra Pradesh", Value = "Andhra Pradesh" },
+                            new SelectListItem { Text = "Arunachal Pradesh", Value = "Arunachal Pradesh" },
+                            new SelectListItem { Text = "Assam", Value = "Assam" },
+                            new SelectListItem { Text = "Bihar", Value = "Bihar" },
+                            new SelectListItem { Text = "Chhattisgarh", Value = "Chhattisgarh" },
+                            new SelectListItem { Text = "Goa", Value = "Goa" },
+                            new SelectListItem { Text = "Gujarat", Value = "Gujarat" },
+                            new SelectListItem { Text = "Haryana", Value = "Haryana" },
+                            new SelectListItem { Text = "Himachal Pradesh", Value = "Himachal Pradesh" },
+                            new SelectListItem { Text = "Jharkhand", Value = "Jharkhand" },
+                            new SelectListItem { Text = "Karnataka", Value = "Karnataka" },
+                            new SelectListItem { Text = "Kerala", Value = "Kerala" },
+                            new SelectListItem { Text = "Madhya Pradesh", Value = "Madhya Pradesh" },
+                            new SelectListItem { Text = "Maharashtra", Value = "Maharashtra" },
+                            new SelectListItem { Text = "Manipur", Value = "Manipur" },
+                            new SelectListItem { Text = "Meghalaya", Value = "Meghalaya" },
+                            new SelectListItem { Text = "Mizoram", Value = "Mizoram" },
+                            new SelectListItem { Text = "Nagaland", Value = "Nagaland" },
+                            new SelectListItem { Text = "Odisha", Value = "Odisha" },
+                            new SelectListItem { Text = "Punjab", Value = "Punjab" },
+                            new SelectListItem { Text = "Rajasthan", Value = "Rajasthan" },
+                            new SelectListItem { Text = "Sikkim", Value = "Sikkim" },
+                            new SelectListItem { Text = "Tamil Nadu", Value = "Tamil Nadu" },
+                            new SelectListItem { Text = "Telangana", Value = "Telangana" },
+                            new SelectListItem { Text = "Tripura", Value = "Tripura" },
+                            new SelectListItem { Text = "Uttar Pradesh", Value = "Uttar Pradesh" },
+                            new SelectListItem { Text = "Uttarakhand", Value = "Uttarakhand" },
+                            new SelectListItem { Text = "West Bengal", Value = "West Bengal" }
+                        },
+                        new { @class = "state-dropdown" })
+
+                    @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Pin Code</td>
+                <td>
+                    @Html.TextBoxFor(m => m.PinCode)
+                    @Html.ValidationMessageFor(m => m.PinCode, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Where did you hear about this concert?</td>
+                <td colspan="3" class="options">
+                    @Html.RadioButtonFor(m => m.HeardAboutConcert, "Facebook") Facebook
+                    @Html.RadioButtonFor(m => m.HeardAboutConcert, "Twitter") Twitter
+                    @Html.RadioButtonFor(m => m.HeardAboutConcert, "YouTube") YouTube
+                    @Html.RadioButtonFor(m => m.HeardAboutConcert, "Online Ads") Online Ads
+
+                    <br />
+
+                    @Html.RadioButtonFor(m => m.HeardAboutConcert, "Instagram") Instagram
+                    @Html.RadioButtonFor(m => m.HeardAboutConcert, "Referral") Referral
+                    @Html.RadioButtonFor(m => m.HeardAboutConcert, "Other") Other
+
+                    @Html.ValidationMessageFor(m => m.HeardAboutConcert, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Virtual Concert Fee</td>
+                <td colspan="3">
+                    <input type="checkbox" checked disabled />
+                    Virtual Admission Ticket - $10.00
+
+                    @Html.HiddenFor(m => m.VirtualConcertFee, new { id = "ticketPrice" })
+                    @Html.ValidationMessageFor(m => m.VirtualConcertFee, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Quantity</td>
+                <td>
+                    @Html.TextBoxFor(m => m.Quantity, new
+                    {
+                        type = "number",
+                        placeholder = "Quantity"
+                    })
+                    @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Total Amount $</td>
+                <td colspan="3">
+                    @Html.TextBoxFor(m => m.TotalAmount, new
+                    {
+                        type = "number"
+                    })
+                    @Html.ValidationMessageFor(m => m.TotalAmount, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Payment Method</td>
+                <td colspan="3">
+                    @Html.RadioButtonFor(m => m.PaymentMethod, "Cash") Cash
+                    @Html.RadioButtonFor(m => m.PaymentMethod, "Check") Check
+                    @Html.RadioButtonFor(m => m.PaymentMethod, "Credit Card") Credit Card
+                    @Html.RadioButtonFor(m => m.PaymentMethod, "Wire Transfer") Wire Transfer
+
+                    @Html.ValidationMessageFor(m => m.PaymentMethod, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="reminders">
+            <h3>REMINDERS:</h3>
+
+            <ul>
+                <li>Relevant links will be sent via email after registration.</li>
+                <li>The virtual concert will begin at 7:00 PM and ends at 9:00 PM.</li>
+                <li>Chatroom will be available. Please respect other attendees.</li>
+                <li>No flaming. No flooding. No spamming.</li>
+                <li>Tickets are NON REFUNDABLE.</li>
+            </ul>
+        </div>
+
+        <input type="submit"
+               value="@buttonText"
+               class="submit-btn" />
+
+        @Html.ActionLink("View Registered Users", "RegistrationList", "Home", null, new { @class = "list-link" })
+
+    </div>
+}
